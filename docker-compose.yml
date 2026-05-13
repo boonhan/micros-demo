@@ -1,0 +1,15 @@
+services:
+
+  creditscore:
+    build: ./microservice-creditscore
+    ports:
+      - "8082:8082"
+    environment:
+      USER_SERVICE_URL: http://user:8081
+    depends_on:
+      - user
+  
+  user:
+    build: ./microservice-user
+    ports:
+      - "8081:8081"
